@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reunion Medical Centre — Isipingo, Durban</title>
+<meta name="description" content="Reunion Medical Centre, Isipingo: general medicine, dentistry, optometry, physiotherapy and clinical psychology under one roof.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16303D;
+    --paper:#EEF0E6;
+    --card:#FBFAF3;
+    --gold:#B8863B;
+    --sage:#5C7A63;
+    --line:#CBCFBC;
+    --max: 1160px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Public Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:0.02em;
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  img,svg{max-width:100%;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(238,240,230,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+    max-width:var(--max); margin:0 auto;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+  }
+  .brand-mark{
+    width:38px;height:38px;border-radius:50%;
+    background:var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--paper);
+    font-family:'Fraunces',serif; font-weight:600; font-size:16px;
+    flex-shrink:0;
+  }
+  .brand-name{
+    font-family:'Fraunces',serif; font-weight:600; font-size:18px;
+    line-height:1.15;
+  }
+  .brand-name span{display:block; font-family:'IBM Plex Mono',monospace; font-weight:400; font-size:10.5px; letter-spacing:0.08em; color:var(--sage); text-transform:uppercase; margin-top:2px;}
+  nav.links{display:flex; gap:28px; font-size:14.5px;}
+  nav.links a{text-decoration:none; opacity:0.82; position:relative;}
+  nav.links a:hover{opacity:1;}
+  .nav-cta{
+    background:var(--ink); color:var(--paper);
+    padding:9px 18px; border-radius:2px; text-decoration:none;
+    font-size:13.5px; font-weight:500;
+    white-space:nowrap;
+  }
+  .nav-toggle{display:none; background:none; border:none; cursor:pointer; padding:6px;}
+  .nav-toggle span{display:block; width:22px; height:2px; background:var(--ink); margin:5px 0;}
+
+  @media (max-width:860px){
+    nav.links{
+      position:fixed; inset:64px 0 auto 0; background:var(--paper);
+      flex-direction:column; padding:18px 28px 24px; gap:16px;
+      border-bottom:1px solid var(--line);
+      transform:translateY(-130%); transition:transform .25s ease;
+    }
+    nav.links.open{transform:translateY(0);}
+    .nav-toggle{display:block;}
+    .nav-cta{display:none;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:64px 0 40px;
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--sage); margin-bottom:18px; display:block;
+  }
+  .hero h1{
+    font-size:clamp(40px, 6vw, 68px);
+    line-height:0.98;
+  }
+  .hero h1 em{font-style:italic; color:var(--gold);}
+  .hero p.lede{
+    margin-top:22px; font-size:18px; line-height:1.55; max-width:46ch; opacity:0.85;
+  }
+  .hero-ctas{margin-top:32px; display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 22px; border-radius:2px; text-decoration:none;
+    font-size:14.5px; font-weight:500; border:1px solid var(--ink);
+  }
+  .btn-solid{background:var(--ink); color:var(--paper);}
+  .btn-ghost{background:transparent; color:var(--ink);}
+  .btn-solid:hover{background:#0e2229;}
+  .btn-ghost:hover{background:rgba(22,48,61,0.06);}
+
+  /* ---------- Appointment card (signature element) ---------- */
+  .appt-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:26px 26px 20px;
+    position:relative;
+    box-shadow:0 18px 40px -22px rgba(22,48,61,0.35);
+    transform:rotate(1.4deg);
+  }
+  .appt-card::before{
+    content:"";
+    position:absolute; inset:8px;
+    border:1px dashed var(--line);
+    pointer-events:none;
+  }
+  .appt-stamp{
+    position:absolute; top:-14px; right:-14px;
+    width:70px; height:70px; border-radius:50%;
+    background:var(--gold); color:var(--paper);
+    display:flex; align-items:center; justify-content:center;
+    text-align:center; font-family:'IBM Plex Mono',monospace;
+    font-size:9px; letter-spacing:0.05em; line-height:1.3;
+    transform:rotate(8deg);
+    box-shadow:0 8px 18px -8px rgba(184,134,59,0.6);
+  }
+  .appt-card h3{
+    font-size:13px; text-transform:uppercase; letter-spacing:0.1em;
+    font-family:'IBM Plex Mono',monospace; font-weight:500; color:var(--sage);
+    margin-bottom:14px;
+  }
+  .appt-rows{border-top:1px solid var(--line);}
+  .appt-row{
+    display:grid; grid-template-columns:1fr 1fr;
+    padding:11px 0; border-bottom:1px solid var(--line);
+    font-size:14px;
+  }
+  .appt-row .lbl{opacity:0.6;}
+  .appt-row .val{font-family:'IBM Plex Mono',monospace; font-size:13px; text-align:right;}
+  .appt-foot{
+    margin-top:16px; font-size:12.5px; opacity:0.65; font-style:italic;
+  }
+
+  @media (max-width:860px){
+    .hero{grid-template-columns:1fr; padding-top:36px;}
+    .appt-card{transform:rotate(0);}
+  }
+
+  /* ---------- Sections ---------- */
+  section{padding:78px 0;}
+  section[id], footer[id]{scroll-margin-top:88px;}
+  .section-head{
+    display:grid; grid-template-columns:220px 1fr; gap:40px;
+    margin-bottom:44px;
+  }
+  .section-head .idx{
+    font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--sage);
+    text-transform:uppercase; letter-spacing:0.1em;
+  }
+  .section-head h2{font-size:clamp(28px,3.6vw,40px);}
+  @media (max-width:760px){
+    .section-head{grid-template-columns:1fr; gap:10px;}
+  }
+
+  .who-grid{
+    display:grid; grid-template-columns:1.3fr 1fr; gap:56px; align-items:start;
+  }
+  .who-grid p{font-size:17px; line-height:1.7; opacity:0.88;}
+  .who-grid p + p{margin-top:16px;}
+  .stat-list{border-top:1px solid var(--line);}
+  .stat{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:16px 0; border-bottom:1px solid var(--line);
+  }
+  .stat .num{font-family:'Fraunces',serif; font-size:30px; color:var(--gold);}
+  .stat .lbl{font-size:13px; text-align:right; max-width:16ch; opacity:0.75;}
+  @media (max-width:760px){.who-grid{grid-template-columns:1fr;}}
+
+  /* services */
+  .service-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line);
+  }
+  .service-card{
+    background:var(--card); padding:28px 26px; min-height:230px;
+    display:flex; flex-direction:column;
+  }
+  .service-card .tag{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--sage); margin-bottom:12px;
+  }
+  .service-card h3{font-size:20px; margin-bottom:12px;}
+  .service-card ul{margin:0; padding-left:18px; font-size:14.5px; line-height:1.65; opacity:0.85;}
+  .service-card ul li{margin-bottom:4px;}
+  @media (max-width:900px){.service-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:600px){.service-grid{grid-template-columns:1fr;}}
+
+  /* where */
+  .where-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;}
+  .addr-block{font-size:17px; line-height:1.6;}
+  .addr-block .label{font-family:'IBM Plex Mono',monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:0.08em; color:var(--sage); display:block; margin-bottom:8px;}
+  .map-frame{
+    border:1px solid var(--line); border-radius:2px; overflow:hidden;
+    filter:grayscale(0.15) contrast(1.02);
+  }
+  .map-frame iframe{display:block; width:100%; height:280px; border:0;}
+  .contact-line{margin-top:22px; display:flex; flex-direction:column; gap:10px; font-size:15px;}
+  .contact-line a{text-decoration:none; border-bottom:1px solid var(--line);}
+
+  /* team */
+  .team-list{border-top:1px solid var(--line);}
+  .team-row{
+    display:grid; grid-template-columns:200px 1fr 220px; gap:24px;
+    padding:26px 0; border-bottom:1px solid var(--line);
+    align-items:start;
+  }
+  .team-row .role{
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; text-transform:uppercase;
+    letter-spacing:0.08em; color:var(--sage); padding-top:4px;
+  }
+  .team-row h3{font-size:22px; margin-bottom:6px;}
+  .team-row .cred{font-size:13.5px; opacity:0.7; margin-bottom:10px;}
+  .team-row p.desc{font-size:14.5px; line-height:1.6; opacity:0.85; margin:0;}
+  .team-row .reg{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; opacity:0.65; text-align:right;
+    line-height:1.6;
+  }
+  @media (max-width:760px){
+    .team-row{grid-template-columns:1fr; gap:8px;}
+    .team-row .reg{text-align:left;}
+  }
+
+  /* footer */
+  footer{
+    background:var(--ink); color:var(--paper); padding:56px 0 30px;
+  }
+  .foot-grid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:40px;}
+  footer h4{
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; text-transform:uppercase;
+    letter-spacing:0.08em; color:#9FB3AB; margin-bottom:14px; font-weight:500;
+  }
+  footer .brand-name{color:var(--paper);}
+  footer p, footer a{font-size:14.5px; line-height:1.7; opacity:0.9; text-decoration:none;}
+  footer a:hover{opacity:1; text-decoration:underline;}
+  .foot-bottom{
+    margin-top:44px; padding-top:22px; border-top:1px solid rgba(255,255,255,0.15);
+    font-size:12.5px; opacity:0.6; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+  @media (max-width:760px){.foot-grid{grid-template-columns:1fr; gap:28px;}}
+
+  [data-reveal]{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
+  [data-reveal].in{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    [data-reveal]{opacity:1; transform:none; transition:none;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <div class="brand-mark">RM</div>
+      <div class="brand-name">Reunion Medical Centre<span>Isipingo · Durban</span></div>
+    </div>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="links">
+      <a href="#who">Who we are</a>
+      <a href="#what">What we do</a>
+      <a href="#where">Where we are</a>
+      <a href="#team">Our team</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <div class="wrap hero">
+    <div>
+      <span class="eyebrow">Shop 5 · Reunion Medical Centre · Isipingo</span>
+      <h1>One roof.<br>Every <em>stage</em><br>of care.</h1>
+      <p class="lede">General medicine, dentistry, optometry, physiotherapy and clinical psychology, based together in Isipingo so your family isn't sent from building to building for ordinary care.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-solid" href="tel:+27319029348">Call: 031 902 9348</a>
+        <a class="btn btn-ghost" href="mailto:shaikhaven@gmail.com">Email the centre</a>
+      </div>
+    </div>
+    <div class="appt-card" data-reveal>
+      <div class="appt-stamp">PR<br>1494910</div>
+      <h3>Consulting Hours</h3>
+      <div class="appt-rows">
+        <div class="appt-row"><span class="lbl">Monday – Friday</span><span class="val">09:00 – 18:00</span></div>
+        <div class="appt-row"><span class="lbl">Saturday</span><span class="val">09:00 – 17:00</span></div>
+        <div class="appt-row"><span class="lbl">Sunday</span><span class="val">Closed</span></div>
+      </div>
+      <p class="appt-foot">Walk-ins welcome — appointments recommended for dental, optometry and psychology sessions.</p>
+    </div>
+  </div>
+
+  <!-- WHO WE ARE -->
+  <section id="who">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="idx">01 — Who we are</span>
+        <h2>A family practice built for a whole community, not just a single ailment.</h2>
+      </div>
+      <div class="who-grid">
+        <div data-reveal>
+          <p>Reunion Medical Centre is a multi-disciplinary practice in Isipingo, Durban, anchored by Dr I.M. Shaikh, a registered family physician and chronic disease specialist. Around that core practice, we've brought together a dentist, an optometrist, a physiotherapist and a clinical psychologist, so a family can be seen, diagnosed, treated and followed up without being routed across town.</p>
+          <p>Our patients are mostly local: families managing long-term conditions like diabetes and hypertension, workers who need an insurance medical done properly the first time, and anyone who has been putting off a dentist or eye test because the referral chain felt like too much admin.</p>
+        </div>
+        <div data-reveal>
+          <div class="stat-list">
+            <div class="stat"><span class="num">5</span><span class="lbl">Disciplines under one roof</span></div>
+            <div class="stat"><span class="num">6</span><span class="lbl">Days a week we're open</span></div>
+            <div class="stat"><span class="num">1</span><span class="lbl">Address to remember</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section id="what" style="background:var(--card); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="idx">02 — What we do</span>
+        <h2>Five disciplines, one patient file.</h2>
+      </div>
+      <div class="service-grid">
+        <div class="service-card" data-reveal>
+          <span class="tag">General &amp; Family Medicine</span>
+          <h3>Everyday and chronic care</h3>
+          <ul>
+            <li>Management of HIV/AIDS, diabetes, hypertension, asthma &amp; allergies, obesity</li>
+            <li>HIV counselling, testing &amp; treatment</li>
+            <li>Pregnancy testing, ultrasound &amp; ECG</li>
+            <li>Dispensing of medicines on-site</li>
+            <li>Minor procedures &amp; insurance medicals</li>
+          </ul>
+        </div>
+        <div class="service-card" data-reveal>
+          <span class="tag">Dentistry</span>
+          <h3>Dental care</h3>
+          <ul>
+            <li>Check-ups, cleaning &amp; fillings</li>
+            <li>Extractions &amp; minor dental procedures</li>
+            <li>Referral for laboratory work</li>
+          </ul>
+        </div>
+        <div class="service-card" data-reveal>
+          <span class="tag">Optometry</span>
+          <h3>Eye care</h3>
+          <ul>
+            <li>In-house eye tests</li>
+            <li>Prescriptions &amp; frame guidance</li>
+            <li>Follow-up monitoring for chronic eye conditions</li>
+          </ul>
+        </div>
+        <div class="service-card" data-reveal>
+          <span class="tag">Physiotherapy</span>
+          <h3>Movement &amp; recovery</h3>
+          <ul>
+            <li>Rehabilitation after injury or surgery</li>
+            <li>Chronic pain &amp; mobility management</li>
+            <li>Delivered in partnership with AM Physiotherapists Inc.</li>
+          </ul>
+        </div>
+        <div class="service-card" data-reveal>
+          <span class="tag">Psychology &amp; counselling</span>
+          <h3>Mental health support</h3>
+          <ul>
+            <li>Individual psychotherapy</li>
+            <li>Psychometric assessments</li>
+            <li>Referral support alongside your medical treatment</li>
+          </ul>
+        </div>
+        <div class="service-card" data-reveal>
+          <span class="tag">Laboratory</span>
+          <h3>On-site testing</h3>
+          <ul>
+            <li>Full medical exams &amp; treatment</li>
+            <li>Laboratory sample collection</li>
+            <li>Results fed back to your treating doctor</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHERE -->
+  <section id="where">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="idx">03 — Where we do it</span>
+        <h2>Find us in Isipingo.</h2>
+      </div>
+      <div class="where-grid">
+        <div data-reveal>
+          <div class="addr-block">
+            <span class="label">Address</span>
+            Shop 5, Reunion Medical Centre<br>
+            7 Phila Ndwandwe Road<br>
+            Isipingo, Durban, 4133
+          </div>
+          <div class="contact-line">
+            <a href="tel:+27319029348">Tel: 031 902 9348</a>
+            <a href="tel:+27831902035">Cell: 083 786 9029</a>
+            <a href="mailto:shaikhaven@gmail.com">shaikhaven@gmail.com</a>
+          </div>
+        </div>
+        <div class="map-frame" data-reveal>
+          <iframe loading="lazy" src="https://www.google.com/maps?q=7+Phila+Ndwandwe+Road,+Isipingo,+Durban,+4133&output=embed" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team" style="background:var(--card); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="idx">04 — How well we do it</span>
+        <h2>The people behind the practice.</h2>
+      </div>
+      <div class="team-list">
+        <div class="team-row" data-reveal>
+          <span class="role">General Doctor</span>
+          <div>
+            <h3>Dr I.M. Shaikh</h3>
+            <div class="cred">MBChB (Natal) · Dip.HIV Management (College of Medicine SA) · Family Physician &amp; Chronic Disease Specialist</div>
+            <p class="desc">Leads general and family medicine at the centre, with a focus on HIV/AIDS, diabetes, hypertension, asthma &amp; allergies, and obesity management.</p>
+          </div>
+          <div class="reg">MP 0296538<br>PR 1494910</div>
+        </div>
+        <div class="team-row" data-reveal>
+          <span class="role">Dentist</span>
+          <div>
+            <h3>Dr M. Haffegee</h3>
+            <div class="cred">Dental Services</div>
+            <p class="desc">Provides general dental care for patients of the centre, from routine check-ups to minor procedures.</p>
+          </div>
+          <div class="reg">On-site</div>
+        </div>
+        <div class="team-row" data-reveal>
+          <span class="role">Optometrist</span>
+          <div>
+            <h3>In-house Optometry</h3>
+            <div class="cred">Eye Care Services</div>
+            <p class="desc">Eye tests and prescriptions offered in-house, alongside your regular medical visit.</p>
+          </div>
+          <div class="reg">On-site</div>
+        </div>
+        <div class="team-row" data-reveal>
+          <span class="role">Physiotherapist</span>
+          <div>
+            <h3>Anele</h3>
+            <div class="cred">BSc Physiotherapy (UCT) · AM Physiotherapists Inc.</div>
+            <p class="desc">Supports rehabilitation and mobility care for patients referred through the centre.</p>
+          </div>
+          <div class="reg">PR 1180630</div>
+        </div>
+        <div class="team-row" data-reveal>
+          <span class="role">Clinical Psychologist</span>
+          <div>
+            <h3>Nolwazi Nzama</h3>
+            <div class="cred">BSS Psychology (Hons) · MA Population Studies · MA Clinical Psychology</div>
+            <p class="desc">Offers psychotherapy and psychometric assessments for patients and families needing mental health support.</p>
+          </div>
+          <div class="reg">PS 0150401<br>PR 1052454</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap" style="margin-bottom:40px;">
+    <h4>For booking:</h4>
+    <p style="max-width:56ch;">Call or email the centre directly to make an appointment. Let us know which service you need — general medicine, dentistry, optometry, physiotherapy or psychology — and we'll get you booked in with the right person.</p>
+  </div>
+  <div class="wrap foot-grid">
+    <div>
+      <div class="brand-name" style="font-size:19px; margin-bottom:12px;">Reunion Medical Centre</div>
+      <p>Shop 5, 7 Phila Ndwandwe Road<br>Isipingo, Durban, 4133</p>
+    </div>
+    <div>
+      <h4>Reach Us</h4>
+      <p><a href="tel:+27319029348">031 902 9348</a></p>
+      <p><a href="tel:+27831902035">083 786 9029</a></p>
+      <p><a href="mailto:shaikhaven@gmail.com">shaikhaven@gmail.com</a></p>
+    </div>
+    <div>
+      <h4>Hours</h4>
+      <p>Mon – Fri: 09:00 – 18:00</p>
+      <p>Saturday: 09:00 – 17:00</p>
+      <p>Sunday: Closed</p>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2026 Reunion Medical Centre, Isipingo.</span>
+    <span>MP 0296538 · PR 1494910</span>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.links a').forEach(a=>{
+    a.addEventListener('click', ()=> document.querySelector('.links').classList.remove('open'));
+  });
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.15});
+  document.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
