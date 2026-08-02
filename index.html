@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reunion Medical Centre — Isipingo, Durban</title>
 <meta name="description" content="Reunion Medical Centre, Isipingo: general medicine, dentistry, optometry, physiotherapy and clinical psychology under one roof.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%2316303D'/><g transform='translate(7,8) scale(0.85)' stroke='%23EEF0E6' stroke-width='2.3' fill='none' stroke-linecap='round' stroke-linejoin='round'><path d='M6 4h-1a2 2 0 0 0 -2 2v3.5a5.5 5.5 0 0 0 11 0v-3.5a2 2 0 0 0 -2 -2h-1'/><path d='M8 15a6 6 0 1 0 12 0v-3'/><path d='M11 3v2'/><path d='M6 3v2'/><circle cx='18' cy='10' r='2'/></g></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -137,16 +138,6 @@
     border:1px dashed var(--line);
     pointer-events:none;
   }
-  .appt-stamp{
-    position:absolute; top:-14px; right:-14px;
-    width:70px; height:70px; border-radius:50%;
-    background:var(--gold); color:var(--paper);
-    display:flex; align-items:center; justify-content:center;
-    text-align:center; font-family:'IBM Plex Mono',monospace;
-    font-size:9px; letter-spacing:0.05em; line-height:1.3;
-    transform:rotate(8deg);
-    box-shadow:0 8px 18px -8px rgba(184,134,59,0.6);
-  }
   .appt-card h3{
     font-size:13px; text-transform:uppercase; letter-spacing:0.1em;
     font-family:'IBM Plex Mono',monospace; font-weight:500; color:var(--sage);
@@ -265,6 +256,7 @@
   footer .brand-name{color:var(--paper);}
   footer p, footer a{font-size:14.5px; line-height:1.7; opacity:0.9; text-decoration:none;}
   footer a:hover{opacity:1; text-decoration:underline;}
+  .social-link{display:inline-flex; align-items:center; gap:8px;}
   .foot-bottom{
     margin-top:44px; padding-top:22px; border-top:1px solid rgba(255,255,255,0.15);
     font-size:12.5px; opacity:0.6; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
@@ -284,7 +276,15 @@
 <header>
   <div class="nav">
     <div class="brand">
-      <div class="brand-mark">RM</div>
+      <div class="brand-mark">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 4h-1a2 2 0 0 0 -2 2v3.5a5.5 5.5 0 0 0 11 0v-3.5a2 2 0 0 0 -2 -2h-1"/>
+          <path d="M8 15a6 6 0 1 0 12 0v-3"/>
+          <path d="M11 3v2"/>
+          <path d="M6 3v2"/>
+          <path d="M18 10a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/>
+        </svg>
+      </div>
       <div class="brand-name">Reunion Medical Centre<span>Isipingo · Durban</span></div>
     </div>
     <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.links').classList.toggle('open')">
@@ -313,7 +313,6 @@
       </div>
     </div>
     <div class="appt-card" data-reveal>
-      <div class="appt-stamp">PR<br>1494910</div>
       <h3>Consulting Hours</h3>
       <div class="appt-rows">
         <div class="appt-row"><span class="lbl">Monday – Friday</span><span class="val">09:00 – 18:00</span></div>
@@ -516,6 +515,10 @@
       <p><a href="tel:+27319029348">031 902 9348</a></p>
       <p><a href="tel:+27831902035">083 786 9029</a></p>
       <p><a href="mailto:shaikhaven@gmail.com">shaikhaven@gmail.com</a></p>
+      <p><a class="social-link" href="https://www.instagram.com/reunion.medical" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        Instagram
+      </a></p>
     </div>
     <div>
       <h4>Hours</h4>
